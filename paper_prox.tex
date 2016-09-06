@@ -1,0 +1,401 @@
+\documentclass[iop]{emulateapj}
+%\documentclass[preprint]{aastex}
+\usepackage{epsfig}
+\usepackage{graphicx}
+
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{rotating}
+\usepackage{float}
+%\usepackage{geometry}
+
+\usepackage{braket}
+\usepackage{longtable}
+\usepackage[para]{threeparttablex}
+\usepackage{adjustbox}
+\usepackage{afterpage}
+
+% \usepackage[round, comma, sort, authoryear]{natbib}
+\usepackage{natbib}
+%\usepackage[backend=bibtex]{biblatex}
+\bibliographystyle{apj}
+
+%% Hyperlinks im Dokument; muss als eines der letzten Pakete geladen werden
+\usepackage[pdfstartview=FitH,      % Oeffnen mit fit width
+            breaklinks=true,        % Umbrueche in Links, nur bei pdflatex default
+            bookmarksopen=true,     % aufgeklappte Bookmarks
+            bookmarksnumbered=true  % Kapitelnummerierung in bookmarks
+            ]{hyperref}
+
+%%----------------------------------------
+%% YY
+\usepackage{color}
+\usepackage{ulem}
+\usepackage{xspace}
+\usepackage{cancel}
+\definecolor{lgray}{gray}{0.85}
+
+% own commands
+\newcommand{\lya} {Ly$\alpha$\xspace}
+\newcommand{\lyb} {Ly$\beta$\xspace}
+\newcommand{\lcont}{$\mathcal{L_{\rm cont}}$~}
+\newcommand{\lpdf}{$\mathcal{L_{\rm PDF}}$~}
+\newcommand{\siiv} {\ion{Si}{4}\xspace}
+\newcommand{\hi} {\ion{H}{1}\xspace}
+\newcommand{\hii} {\ion{H}{2}\xspace}
+\newcommand{\cii} {\ion{C}{2}\xspace}
+\newcommand{\mgii} {\ion{Mg}{2}\xspace}
+\newcommand{\civ} {\ion{C}{4}\xspace}
+\newcommand{\cv} {\ion{C}{5}\xspace}
+\newcommand{\ciii} {\ion{C}{3}\xspace}
+\newcommand{\oiii} {\ion{O}{3}\xspace}
+\newcommand{\oii} {\ion{O}{2}\xspace}
+\newcommand{\ovi} {\ion{O}{6}\xspace}
+\newcommand{\heii}{\ion{He}{2}\xspace}
+\newcommand{\heiii}{\ion{He}{3}\xspace}
+\newcommand{\siiii}{\ion{Si}{3}\xspace}
+\newcommand{\nv} {\ion{N}{5}\xspace}
+\newcommand{\niv} {\ion{N}{4}\xspace}
+\newcommand{\yy}  {\sf \color{blue}}
+\newcommand{\unitcgslum} {erg\,s$^{-1}$\xspace}
+\newcommand{\unitcgssb}  {erg\,s$^{-1}$\,cm$^{-2}$\,arcsec$^{-2}$\xspace}
+\newcommand{\unitcgsflux}{erg\,s$^{-1}$\,cm$^{-2}$\xspace}
+\def \cgssb {{\rm\,erg\,s^{-1}\,cm^{-2}\,arcsec^{-2}}}
+\def\bea{\begin{eqnarray}}
+\def\eea{\end{eqnarray}}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
+
+
+%----------------------------------------
+
+\begin{document}
+
+\title{Small Proximity Zones!}
+
+ 
+\author{Anna-Christina Eilers\altaffilmark{1}\altaffilmark{2}\altaffilmark{*}, Frederick Davies\altaffilmark{1}, Joseph F. Hennawi\altaffilmark{1}, Chiara Mazzucchelli\altaffilmark{1}\altaffilmark{2}}
+\altaffiltext{*}{email: eilers@mpia.de}
+\altaffiltext{1}{Max-Planck-Institute for Astronomy, K\"onigstuhl 17, 69117 Heidelberg, Germany; eilers@mpia.de}
+\altaffiltext{2}{International Max Planck Research School for Astronomy \& Cosmic Physics at the University of Heidelberg}
+
+
+\slugcomment{Draft Version of \today}
+\shortauthors{Eilers et al.}
+
+\begin{abstract}
+
+xxx
+\end{abstract}
+    
+\keywords{---
+intergalactic medium --- methods: data analysis --- quasars: absorption lines
+} 
+
+%________________________________________________________________
+\maketitle
+
+
+\section{Introduction}
+
+%% focus on neutral gas fraction and reionization or small zones and quasar lifetime?!
+%% calculate neutral gas fraction with eqn. (1)?! Assuming N and t_Q...
+
+\begin{itemize}
+\item One of the major remaining goals in observational astronomy today is to understand how our Universe transitioned from the "dark ages", following recombination, into the ionized universe we can observe today. For this purpose a detailed understanding of the epoch of hydrogen reionization plays a fundamental role. Despite much progress in the last decade, there are still many open questions regarding the exact timing and the morphology of the reionization process. 
+\item Studies of the evolution of the (Lyman-$\alpha$) \lya absorption features in the spectra of distant quasars are one of the key observational probes of this epoch. They suggest a qualitative change in the state of the intergalactic medium (IGM), indicating a rapid increase in the volume averaged neutral gas fraction for $z\gtrsim 5.5$ (\citet{Fan2006}, \citet{Becker2015}). 
+\item The absence of large Gunn-Peterson troughs in spectra at $z\lesssim 5.5$ indicates the epoch of hydrogen reionization must be completed at that time and the volume averaged neutral hydrogen fraction $\langle f_{\rm HI}\rangle$ lies below $10^{-4}$\citep{Carilli2010}. 
+\item However, constraining the neutral hydrogen fraction at $z\gtrsim 6.0$ with Lyman series absorption is extremely difficult, since this technique ceases to be sensitive for neutral fractions $\langle f_{\rm HI}\rangle \gtrsim 10^{-4}$ and produces saturated Lyman series absorption. 
+\item Thus in this paper, we focus on a different technique that is more sensitive to larger values of $\langle f_{\rm HI}\rangle$. The transparent region observed immediately blueward of the \lya emission line in quasar spectra, the so-called quasar proximity zone, is caused by the radiation of the quasar itself that ionizes the ambient IGM around it. The size of this ionized \hii region should be proportional to the neutral hydrogen fraction of the IGM when making assumptions for the quasar age and ionizing luminosity. 
+\item \citet{BoltonHaehnelt2006} showed that the size of the ionized region around the quasar when expanding into a mostly neutral IGM is proportional to the volume weighted neutral hydrogen fraction $f_{\rm HI}=n_{\rm HI}/n_{\rm H}$, the number of ionizing Lyman limit photons $\dot{N}$ and the quasar lifetime $t_Q$:
+\begin{align}
+R_p = &\frac{4.2}{(\Delta f_{\rm HI})^{1/3}}\left(\frac{\dot{N}}{2\cdot 10^{57}\rm s^{-1}}\right)^{1/3}\nonumber\\
+&\cdot \left(\frac{t_Q}{10^{7}\rm yrs}\right)^{1/3} \left(\frac{1+z}{7}\right)^{-1} \rm Mpc. 
+\end{align}
+\item Simulation paper... \citet{BoltonHaehnelt2007}, \citet{BoltonHaehnelt2006}, \citet{Keating2015}
+\item Previous observational studies of the sizes of quasar proximity zones found evidence for a steep decrease in proximity zone size with increasing redshift within the redshift range of $5.7\leq z\leq 6.4$ (\citet{Fan2006}, \citet{Carilli2010}) despite a large scatter in the observations, suggesting a strong evolution of the neutral gas fraction of the IGM. With the discovery of the current highest redshift quasar $\rm ULAS J1120+0641$\citep{Mortlock2011} and the analysis of its proximity zone (\citet{Venemans2015}, \citet{Bosman2015}), this decreasing trend became somewhat shallower, but still indicates a strong evolution in proximity zone size with redshift.  
+%\item spectra of high redshift quasars show evidence for these large ionized regions on scales of $\sim 5$~pMpc, excess emission before GP trough due to local ionizing effects of the quasar
+\item However, the measurements of the proximity zone sizes contain a number of uncertainties, the most significant one being the imprecisely known redshift of the quasar. 
+\item In this paper we re-investigate the evolution of the quasar proximity zone sizes with redshift taking a larger sample of quasar spectra with updated redshifts and consistent measurements of their magnitudes into account. 
+\item This paper is structured as follows: we describe our data set and the reduction pipeline in \S~\ref{sec:data}. \S~\ref{sec:methods} describes the methods used to measure the proximity zone sizes of each quasar. In \S~\ref{sec:sims} we describe a suite of radiative transfer simulations with which we will compare our observations. We show our results in \S~\ref{sec:results} and discuss them in \S~\ref{sec:discussion}, before summarizing our results in \S~\ref{sec:summary}. 
+\end{itemize}
+
+
+\section{Data}\label{sec:data}
+
+\begin{itemize}
+\item All quasar spectra are taken in the optical wavelength regime by the Echellette Spectrograph and Imager (ESI) at the Keck Telescopes, collected from the archive and reduced in a homogeneous way. 
+\item The exposure times and thus the signal to noise ratio of the spectra varies quite significantly between $1200$~s $\leq t_{\rm exp}\leq x$~s exposure time and $4\leq \rm S/N \leq 120$. Note that we will smooth the quasar spectra to a resolution of $20${\AA} in the observed wavelength frame for the analysis of their proximity zones (see \S~\ref{sec:measure_prox_zones}), and thus even the spectra with low $\rm S/N$ ratio can be taken into account. 
+\item They cover a redshift range of $5.78\leq z \leq 6.54$. 
+\item Determining precise redshifts for quasars is very challenging, because of emission broad-line widths, Gunn-Peterson absorption and offsets between different ionization lines. \citet{Venemans2016} showed that there is a systematic offset between \mgii and higher ionization broad-line redshifts. 
+\item We assign each quasar that has its redshift determined by the detection of a \cii or CO line a redshift error of $\Delta z=100$~km/s. For quasars with a redshift measurement from a \mgii line we take a redshift error of $\Delta z=270$~km/s and for the remaining quasars for which the redshift was determined by the \lya line that suffers from large uncertainties due to its width and Gunn-Peterson absorption, we account for a redshift error of $\Delta z=1000$~km/s. 
+\item We take the rest-frame $1450${\AA} magnitudes $M_{\rm 1450}$ from \citet{Banados2016} who determined these magnitudes for all sources in a consistent way by extrapolating $y$- or $J$-band magnitudes, since most optical quasar spectra at these high redshifts have limited wavelength coverage at $1450${\AA}. 
+\item We exclude the two quasars $\rm SDSSJ1048+4637$ and $\rm SDSSJ0353+0104$ from the analysis, because of their broad absorption line features. 
+\end{itemize}
+
+\subsection{Data Reduction}
+
+\begin{itemize}
+\item The spectra are uniformly reduced using the ESIRedux code\footnote{\url{http://www2.keck.hawaii.edu/inst/esi/ESIRedux/}} developed as part of the XIDL\footnote{\url{http://www.ucolick.org/~xavier/IDL/}} suite of astronomical routines in IDL. 
+\item The general approach of the code is as follows: 
+\begin{itemize}
+\item Construct a normalized flat image. 
+\item Create a wavelength image. In this image, every science pixel has a unique wavelength is associated with it. 
+\item Identify the science objects within the slit.
+\item Sky subtract masking all objects. % The routines use a combination of polynomial and b-spline fitting algorithms.
+\item Extract (boxcar or optimal assuming Gaussian profile). 
+\item Combine, flux and coadd into one-dimensional spectra. 
+\end{itemize}
+\item We optimized the code, such that it improves the reduction for high redshift quasars. This includes removing the fringing on the red wavelength side by subtracting two images with similar exposure time from each other... 
+\item The other improvement we introduced was that when coadding the one-dimensional spectra form different exposures we weight the whole spectra by the same $\rm S/N$ ratio determined in the continuum of each spectrum. In this way spectral regions with low or none transmitted flux, as there are many in high redshift quasars, do not obtain a similar weight from low $\rm S/N$ exposures as from high $\rm S/N$ exposures. 
+\end{itemize}
+
+
+
+
+
+\section{Methods}\label{sec:methods}
+
+\subsection{Quasar Continuum Normalization}
+
+\begin{itemize}
+\item We normalize all quasar spectra to the arbitrary value of unity at $1280${\AA} in the rest-frame (at least those spectra that have flux there, the others are normalized around $\approx 1240${\AA}). 
+\item \citet{Paris2011} derived principal component spectra (PCS) that characterize quasar continua from $78$ high-quality spectra around $z\sim 3$. They then construct a projection matrix to predict the continuum in the \lya forest from the red part of the spectrum. 
+\item We use the PCS from \citet{Paris2011} to estimate the quasar continuum on the red side of the spectrum. We include in most cases five (sometimes three or seven) PCS into our analysis and estimate their coefficients with a Markov Chain Monte Carlo (MCMC) algorithm. We take the mean of the posterior probability distributions for each coefficient as the best estimate for the continuum model. 
+\item We then use the projection matrix provided by \citet{Paris2011} in order to obtain coefficients for the PCS for a continuum model that covers the whole spectral range, i.e. also the blue part of each spectrum with the \lya forest. 
+\item An example of a quasar spectrum from our data set and its continuum model is shown in Fig.~\ref{fig:continuum}. 
+\item Note that for a handful of quasars we use the PCS from \citet{Suzuki2006} instead, because by visual inspection of the estimated continua of these quasars we decided these PCS would give a better continuum model. These PCS cover the whole spectral range between $1020${\AA}-$1600${\AA}, but we fit them to the data only on wavelengths redward of the \lya line. 
+\end{itemize}
+
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=.9\textwidth]{figures/spectrum_J2315.pdf}
+\caption{Example of a quasar spectrum and its continuum model. The continuum is fitted to the data with five PCS from \citet{Paris2011} on the red wavelength side of the spectrum, i.e. $\lambda > 1216${\AA}, and then projected onto the blue wavelength side, i.e. $\lambda < 1216${\AA}, in order to predict the continuum in the \lya forest region. \label{fig:continuum}} 
+\end{figure*}
+
+
+\subsection{Measuring Quasar Proximity Zones}\label{sec:measure_prox_zones}
+
+\begin{itemize}
+\item In order to calculate the sizes of each quasars proximity zone we adopt the definition that has been previously used in the literature (see \citet{Fan2006}, \citet{Carilli2010}): We take the continuum normalized quasar spectra and smooth them to a resolution of $20${\AA} in the observed wavelength frame. We then take the first pixels blueward of the \lya emission line that show a drop of the smoothed flux below $10\%$. This sets the end of the proximity zone. 
+\item This is shown in Fig.~\ref{fig:9spectra} for a subset of our data sample. The quasar spectra are shown in black, whereas the red curves show the same spectra smoothed to a resolution of $20${\AA} in the observed wavelength frame. The black vertical dashed lines indicate the limits of the proximity zones set by the quasar redshift and the first drop in flux below $10\%$, which is indicated by the grey horizontal dashed line in each panel. 
+\item We then calculate the size of the proximity zone $R_p$ of the quasar in proper Mpc with: 
+\begin{align}
+R_p = \frac{c\Delta z}{(1+z)H(z)},  
+\end{align}
+where $\Delta z$ indicates the size of the proximity zone in redshift space, $H(z)$ is the Hubble constant at the redshift of the quasar and $c$ shows the speed of light. 
+\item The depicted quasars all cover a similar range in magnitude $-27.5 \leq M_{\rm 1450} \leq -26.5$, but nevertheless show a wide range of proximity zone sizes, between $0.8$~Mpc$\lesssim R_p\lesssim 7.1$~Mpc (check numbers!!). 
+\end{itemize}
+
+
+\begin{figure*}[h]
+\centering
+\includegraphics[width=.9\textwidth]{figures/9spectra_proximity_new.pdf}
+\caption{Continuum normalized spectra of a subset of the quasars in the data set showing the innermost $10$~pMpc region of the quasar. The red curves show the quasar spectra smoothed to a resolution of $20${\AA} in the observed wavelength frame. The horizontal grey dashed lines indicate a flux level of $10\%$. The vertical black dashed lines show the limits of the proximity zones of the quasars. \label{fig:9spectra}} 
+\end{figure*}
+
+\section{Radiative Transfer Simulations}\label{sec:sims}
+
+\begin{itemize}
+\item We would like to compare our observations of quasar proximity zones with those from radiative transfer simulations in order to put the distribution of sizes and their evolution with redshift in context. Thus we run a suite of one-dimensional radiative transfer simulations with the Nyx code (citations!). 
+\item We then take $500$ (?) random skewers through the $100$~Mpc box and place the quasar at the end of them (?). 
+\item Our simulations consider a uniform ultraviolet background radiation (UVB) field, despite the many studies indicating a fluctuating UVB during the epoch of hydrogen reionization (citations!). Due to the definition of the proximity zone that ends when the smoothed flux first drops below $10\%$, the radiation from the quasar itself is expected to dominate the radiation field anyway, such that the UVB radiation field won't have a significant influence. Hence we expect the proximity zone sizes to not be dependent on the morphology of the UVB radiation. 
+\item We do not place the quasars in our simulations into massive haloes as one expects quasars to reside in our Universe, since \citet{Keating2015} have shown that the presence of massive haloes does not influence the size of the quasar proximity zones. 
+\item Our simulations include noise of the quasar spectra with the same noise properties as our observed spectra. We do not include continuum estimation errors, since we do not expect a significant influence on the proximity zones due to these uncertainties. 
+\item For a more detailed description of the simulations see \citet{DaviesFurlanetto2016}. 
+\end{itemize}
+ 
+
+\section{Results}\label{sec:results}
+
+In this section we will first present our measured proximity zones for the ensemble of quasar spectra in our data set. We will then correct these measurements for the individual luminosities of the quasars, such that all effects on the proximity zone sizes due to different quasar luminosities should be taken out. This then shows the evolution of proximity zones with redshift. In the last part of this section we will comment on two particular quasars that show exceptionally small proximity zones. 
+
+\subsection{Measurements of the Quasar Proximity Zones}
+
+\begin{itemize}
+\item We present the results of our measurements of the quasar proximity zone sizes in Table~\ref{tab:overview}. The two last columns show the measured proximity zone $R_p$ in proper Mpc and the proximity zone $R_{p, \rm corr}$ when corrected for the quasar luminosity, i.e. normalized to have a magnitude of $M_{\rm 1450}=-27$.  
+\item The actual measured sizes of the proximity zones $R_p$ of all quasars dependent on the quasars luminosity $M_{\rm 1450}$ are shown in Fig.~\ref{fig:RpvsM}. Our measurements are shown color coded by the redshift of the quasar. The errorbars of the measurements are purely a result of the uncertainty on the measured redshift. The best fit to our data is shown as the blue dashed lines with a $1\sigma$ uncertainty level estimated via bootstrapping. The grey dashed line and its $1\sigma$ uncertainty shows the trend expected from the radiative transfer simulations. The red dotted and yellow dashed-dotted curves show the theoretically expected behaviour when assuming that the ionizing \hii front expands into a mostly neutral or mostly ionized IGM, respectively. 
+\item Previous analyses of the proximity zones have chosen the theoretical prediction when assuming a mostly neutral ambient IGM for correcting the measurements of the proximity zones for the luminosity of the quasar. We will instead chose the expected dependency from the radiative transfer simulations to normalize our measurements in order to take out the dependence on quasar luminosity and calculate the evolution of the quasar proximity zone size with redshift. 
+\item Thus we correct our measurements with (check exponent!!)
+\begin{align}
+R_{p, \rm corr} \approx R_p\cdot 10^{-0.4(-27-M_{\rm 1450})/2.48}, \label{eq:correction} 
+\end{align}
+in order to normalize all quasars to the same magnitude of $M_{\rm 1450}=-27$. 
+\item Fig.~\ref{fig:Rpvsz} shows the evolution of our corrected measurements of the quasar proximity zones color coded by their actual magnitude $M_{\rm 1450}$ with redshift. The data points in both panels are the same. In the left panel we show the best fit of to our measurements and its $1\sigma$ errorbar from bootstrapping errors. Our best fit is (check numbers!!):
+\begin{align*}
+R_{p, \rm corr} = X (1+z)^{-1.718}. 
+\end{align*}
+\item The dashed and dashed-dotted lines are fits to the measurements from \citet{Carilli2010} and \citet{Venemans2015}. However, we have corrected their actual measurements $R_p$ with the same correction that we used (eqn.~(\ref{eq:correction})) and updated their magnitudes $M_{\rm 1450}$ with the ones from \citet{Banados2016} in order to be consistent with ours. 
+\item The right panel of Fig.~\ref{fig:Rpvsz} shows the expected evolution from the radiative transfer simulations. It roughly follows a curve (check numbers!!):
+\begin{align*}
+R_{p, \rm corr} = X (1+z)^{-1.916}. 
+\end{align*}
+\item We obtain a much shallower evolution of the quasar proximity zones with redshift than previous measurements, although consistent with the evolution predicted by the radiative transfer simulations. The shallow evolution is mainly due to a few objects with exceptionally small proximity zones that we will address in the next subsection. 
+\end{itemize}
+
+\afterpage{\clearpage
+%\clearpage
+\begin{ThreePartTable}
+\renewcommand*{\arraystretch}{1.3}
+\begin{longtable*}{lccccc}
+\caption{Overview of our data sample and the measurements of the proximity zone sizes. }\label{tab:overview}\\
+\hline
+\hline
+object & redshift &  redshift source & $M_{\rm 1450}$ & $R_p$ [pMpc] & $R_{p, \rm corr}$ [pMpc]\\
+\hline
+PSO J0226+0302 & $6.5412$ & \cii\tnote{a} &$-27.33$& $3.7334$ & $3.3019$ \\
+CFHQS J0210-0456 & $6.4323$ &  \cii\tnote{m}  &$-24.53$& $1.3698$ & $3.1477$ \\
+SDSS J1148+5251 & $6.4189$ &  \cii\tnote{g} &$-27.62$& $4.5694$ & $3.5524$ \\
+CFHQSJ2329-0301 & $6.417$ & \mgii\tnote{h} &$-25.25$& $3.7334$ & $3.3019$ \\
+SDSS J0100+2802 & $6.3258$ &  \cii\tnote{n} &$-29.14$& $5.9378$ & $2.9306$ \\
+SDSS J1030+0524 & $6.309$&  \mgii\tnote{j} &$-26.99$& $3.7334$ & $3.3019$ \\
+SDSS J1623+3112 & $6.2572$&  \cii\tnote{p} &$-26.55$& $3.7334$ & $3.3019$ \\
+CFHQS J0050+3445 & $6.253$ &  \mgii\tnote{h} &$-26.70$& $3.7334$ & $3.3019$ \\
+SDSS J1048+4637 & $6.2284$ & CO \tnote{c} &$-27.24$& - & - \\
+CFHQS J0227-0605 & $6.20$ &  other \tnote{q} &$-25.28$& $3.7334$ & $3.3019$ \\
+PSO J0402+2452 & $6.18$ &  other \tnote{o} &$-26.95$& $3.7334$ & $3.3019$ \\
+CFHQS J2229+1457 & $6.1517$ & \cii\tnote{g} &$-24.78$& $3.7334$ & $3.3019$ \\
+%CFHQSJ0033-0125 & $6.13$ & & (Willott2010b) &$-27.4$& $3.7334$ & $3.3019$ \\
+SDSS J1250+3130 & $6.15$ & other \tnote{c} &$-26.53$& $3.7334$ & $3.3019$ \\
+ULAS J1319+0950 & $6.1330$& \cii\tnote{e} &$-27.05$& $3.7334$ & $3.3019$ \\
+%FIRSTJ1427+3312 & $6.12$  & &  &$-27.4$& $3.7334$ & $3.3019$ \\
+%CFHQSJ1509-1749 & $6.118$ & 0.007& MgII (Carilli2010) &$-27.4$& $3.7334$ & $3.3019$ \\
+SDSS J2315-0023 & $6.117$ &  other \tnote{f} &$-25.66$& $3.7334$ & $3.3019$ \\
+SDSS J1602+4228 & $6.09$ & other \tnote{c} &$-26.94$& $3.7334$ & $3.3019$ \\
+SDSS J0303-0019 & $6.078$ & \mgii\tnote{c} &$-25.56$& $3.7334$ & $3.3019$ \\
+SDSS J0842+1218 & $6.069$&  \mgii\tnote{i}  &$-26.91$& $3.7334$ & $3.3019$ \\
+SDSS J1630+4012 & $6.065$  & \mgii\tnote{c} &$-26.19$& $3.7334$ & $3.3019$ \\
+SDSS J0353+0104 & $6.049$ & \mgii\tnote{i} &$-26.43$& - & - \\
+CFHQS J1641+3755 & $6.047$  & \mgii\tnote{h} &$-25.67$& $3.7334$ & $3.3019$ \\
+SDSS J2054-0005 & $6.0391$ & \cii\tnote{e} &$-26.21$& $3.7334$ & $3.3019$ \\
+SDSS J1137+3549 & $6.03$ & other \tnote{c}  &$-27.36$& $3.7334$ & $3.3019$ \\
+SDSS J0818+1723 & $6.02$ & other \tnote{c} &$-27.52$& $3.7334$ & $3.3019$ \\
+SDSS J1306+0359 & $6.016$ &  \mgii\tnote{k} &$-26.81$& $3.7334$ & $3.3019$ \\
+ULAS J0148+0600 & $5.98$ &  \mgii\tnote{d}  &$-27.39$& $3.7334$ & $3.3019$ \\
+%SDSSJ0841+2905 & $5.98$ & &  &$-27.4$& $3.7334$ & $3.3019$ \\
+SDSS J1411+1217 & $5.904$&  \mgii\tnote{k} &$-26.69$& $3.7334$ & $3.3019$ \\
+SDSS J1335+3533 & $5.9012$ &  CO \tnote{c} &$-26.67$& $3.7334$ & $3.3019$ \\
+ULAS J0203+0012 & $5.86$ &  \mgii\tnote{b}&$-25.70$ &$3.4054$ &$5.0757$ \\
+SDSS J0840+5624 & $5.8441$ & CO \tnote{l} &$-27.24$& $3.7334$ & $3.3019$ \\
+SDSS J0005-0006 & $5.844$ & \mgii\tnote{i} &$-25.73$& $3.7334$ & $3.3019$ \\
+SDSS J0002+2550 & $5.82$ & other\tnote{c} &$-27.31$& $3.7334$ & $3.3019$ \\
+SDSS J0836+0054 & $5.810$ & \mgii\tnote{k} &$-27.75$& $3.7334$ & $3.3019$ \\
+SDSS J0927+2001 & $5.7722$ & CO \tnote{l} &$-26.76$& $3.7334$ & $3.3019$ \\
+%(SDSS J1044-0125) & $5.7867$ & 0.0007& CII (Willott2015) &$-27.4$& $3.7334$ & $3.3019$ \\
+\hline
+\end{longtable*}
+\begin{tablenotes}
+\item[a] {\footnotesize \citet{Banados2015}}, 
+\item[b] {\footnotesize Bram?}, %\citet{Mortlock2009}}, 
+\item[c] {\footnotesize \citet{Carilli2010}}, 
+\item[d] {\footnotesize \citet{Becker2015}}, 
+\item[e] {\footnotesize \citet{Wang2013}}, 
+\item[f] {\footnotesize \citet{Jiang2008}}, 
+\item[g] {\footnotesize \citet{Willott2015}}, 
+\item[h] {\footnotesize \citet{Willott2010b}}, 
+\item[i] {\footnotesize \citet{DeRosa2011}}, 
+\item[j] {\footnotesize \citet{Jiang2007}}, 
+\item[k] {\footnotesize \citet{Kurk2007}}, 
+\item[l] {\footnotesize \citet{Wang2010}}, 
+\item[m] {\footnotesize \citet{Willott2013}},
+\item[n] {\footnotesize \citet{Wang2016}}, 
+\item[o] {\footnotesize \citet{Banados2016}}, 
+\item[p] {\footnotesize private communication with R.Wang}, 
+\item[q] {\footnotesize \citet{Willott2009}}
+\end{tablenotes}
+\end{ThreePartTable}}
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=.5\textwidth]{figures/rp_vs_M_32qsos.pdf}
+\caption{Sizes of the proximity zones plotted against the quasars magnitude $M_{\rm 1450}$ and color-coded by its redshift. The blue dashed line shows the best fit to the measurements with a $1\sigma$-uncertainty level from bootstrapping errors. The grey dashed line shows the expected evolution of the proximity zones from radiative tranfer simulations. The red dotted and yellow dashed-dotted curves show the theoretical expectations when the IGM surrounding the quasars is mostly neutral or mostly ionized, respectively. \label{fig:RpvsM}} 
+\end{figure}
+
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/rp_vs_z_32qsos.pdf}
+\caption{Evolution of the sizes of the luminosity corrected proximity zones with redshift color-coded by the quasars actual magnitude $M_{1450}$. In the left panel, the blue dashed line shows the best fit to the measurements with a $1\sigma$-uncertainty level from bootstrapping errors. The dashed and dashed-dotted curves show fits from previous analysis of the proximity zones from \citet{Carilli2010} and \citet{Venemans2015} respectively. In the right panel the grey dashed line shows the evolution of the proximity zones found in radiative transfer simulations. \label{fig:Rpvsz}} 
+\end{figure*}
+
+
+\subsection{Quasars with Exceptionally Small Proximity Zones}\label{sec:small_zones}
+
+\begin{itemize}
+\item Fig.~\ref{fig:Rpvsz} shows three objects with exceptionally small proximity zones of $R_{p, \rm corr}\sim 1$~pMpc. One of them, however, $\rm CFHQS J2229+1457$ at $z=6.1517$, is a very faint object with $M_{\rm 1450}=-24.52$ and despite the correction for the quasar luminosity, we might expect a small proximity zone(??). The other two objects at $z=5.9012$ and $z=5.8441$ are considerably less faint, $M_{1450}=-26.82$ and $M_{1450}=-26.66$, respectively, and thus more interesting. 
+\item The spectra of these objects and their proximity zones are shown in the upper two panels of Fig.~(\ref{fig:9spectra}).
+\end{itemize}
+ 
+\subsubsection*{SDSS J1335+3533} 
+\begin{itemize}
+\item This object is a weak emission line quasar. 
+\item The measured uncorrected proximity zone is $R_p\approx xx$~pMpc. 
+\end{itemize}
+
+\subsubsection*{SDSS J0840+5624} 
+\begin{itemize}
+\item The measured uncorrected proximity zone is $R_p\approx xx$~pMpc.  
+\item The proximity zone of this object is very small due to the adopted definition of proximity zones. The smoothed flux drops below $10\%$ after $xx$~pMpc, but afterwards rises again. We adopt the same definition also for the quasars in the simulations...
+\end{itemize}
+
+
+\subsection{Neutral Gas Fraction??}
+\begin{itemize}
+\item Fig.~\ref{fig:Rpvsz} shows very shallow evolution in the sizes of the proximity zones with redshift, hence there should be a very shallow evolution also in the neutral gas fraction of the ambient gas. 
+\item analysis about neutral gas fraction?!
+\end{itemize}
+
+\section{Discussion}\label{sec:discussion}
+
+\begin{itemize}
+\item Fig.~\ref{fig:carilli} shows the comparison of quasar proximity zone sizes from previous measurements from \citet{Carilli2010} and \citet{Venemans2015} to the analysis presented in this paper. 
+\item The measurements along the grey dashed line indicate agreement between the different analyses. Our measurements generally estimate smaller proximity zones then previously obtained, but for most objects the measurements agree within the $2-3\sigma$ errorbars. However, there are three large outliers, where we recover significantly smaller proximity zones. These are the objects $\rm SDSS J0836+0054$ at $R_{p, \rm Carilli} = 13.0$~pMpc for which our measurements result in $R_p\approx xx$~pMpc, $\rm SDSS J0002+2550$ at $R_{p, \rm Carilli} = 11.5$~pMpc and $R_p\approx xx$~pMpc and $\rm SDSS J0840+5624$ at $R_{p, \rm Carilli} = 10.4$~pMpc for which we measure $R_p\approx xx$~pMpc. 
+\item discuss outliers... mostly definitional cases... dependent on continuum normalization?
+\item A comparison of the measured proximity zone sizes to the distribution of proximity zone sizes from the radiative transfer simulations is shown in Fig.~\ref{fig:comp_sim}. The red histogram shows the measured proximity zones for $17$ objects with similar luminosity, i.e. $-27.5\leq M_{\rm 1450}\leq -26.5$, whereas the grey histogram shows the distribution of simulated proximity zone sizes for quasars with the same luminosity and noise properties. 
+\item The two histograms agree well for the bulk of the distribution, i.e. $R_p\approx 4-6$~pMpc. 
+\item The simulations do not reproduce very large proximity zones of $R_p\sim 10-13$~pMpc that were measured by \citet{Carilli2010}. 
+\item On the other hand, our simulations do also not reproduce the excess of small proximity zones around $R_p\approx 1$~pMpc, that we measure for two objects. 
+\item $\rm SDSS J1335+3533$ has been excluded by previous analyses from \citet{Fan2006} and \citet{Carilli2010}, because of its weak emission lines. \citet{Carilli2010} claims that these weak emission line quasars would be of fundamentally different nature, but \citet{Diamond-Stanic2009} shows that weak emission line quasars do not show very different spectra apart from the emission lines and thus do not differ in nature. Hence there is no reason to exclude them. 
+\item The other object with a small proximity zone is $\rm SDSS J0840+5624$ and it shows a small proximity zone due to the definition... Since we apply the same definition in our simulations as well, bla bla. 
+\item What could be explaining such a small quasar proximity zone? There are several possibilities that could explain these small zones. 
+\item Either we could be seeing a very large neutral gas fraction in front of the quasar, possibly a damped \lya absorber (DLA). However, we do not find any expected metals corresponding to the DLA in the quasar spectrum. 
+\item We could be seeing very large fluctuations in the UVB radiation, i.e. a very weak UVB around the location of the quasar. However, since due to the definition the proximity zones are only mildly dependent on the UVB radiation field, the UVB would have to be reduced by at least two orders of magnitudes (?) in the vicinity of this particular quasar, which is far beyond any expected fluctuations (citations?). 
+\item Another reason for these small proximity zones could be a very short lifetime of the quasar of roughly $t_Q\sim 10^5$~yr. 
+\item A more detailed analysis of the possible reasons for the small quasar proximity zones of these quasars will be presented in Fred et al. in prep. 
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=.5\textwidth]{figures/carilli_vs_me.pdf}
+\caption{Comparison of the previous measurements of quasar proximity zone sizes to the analysis presented in this paper for the overlapping objects. The grey dashed line shows the exact one-to-one relation. In general we recover smaller proximity zones than \citet{Carilli2010}. The largest outliers are $\rm SDSS J0836+0054$ at $R_{p, \rm Carilli} = 13.0$~pMpc, $\rm SDSS J0002+2550$ at $R_{p, \rm Carilli} = 11.5$~pMpc, $\rm SDSS J0840+5624$ at $R_{p, \rm Carilli} = 10.4$~pMpc. \label{fig:carilli}} 
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=.5\textwidth]{figures/data_sim.pdf}
+\caption{Distribution of sizes of quasar proximity zones. The grey histogram shows the expected distribution for quasars with magnitude $-27.5\leq M_{\rm 1450}\leq -26.5$ and $?<z<?$. The red histogram shows the distribution of the measured proximity zone sizes of $18$ quasars that fall into the same magnitude and redshift ranges. \label{fig:comp_sim}} 
+\end{figure}
+
+
+
+\section{Summary}\label{sec:summary}
+\begin{itemize}
+\item In this paper we analyzed a data set of $32$ high redshift quasars taken with the ESI instrument on the Keck telescopes, reduced them in a homogeneous way, and analyzed the sizes of the quasar proximity zones with updated measurements of their redshifts and consistent values of their luminosities. 
+\item We did a careful continuum normalization with a principal component analysis from \citet{Paris2011} and \citet{Suzuki2006}, which gives more precise continuum models than previously used power-law fits with Gaussian curves for the emission lines. 
+\item In order to evaluate the evolution of proximity zones with redshift, we correct the measured proximity zone sizes for the quasar's luminosity with the expected relation between $R_p$ and $M_{\rm 1450}$ from the radiative transfer simulations instead of the theoretical expectation for an expanding ionized \hii bubble into a purely neutral ambient IGM. 
+\item We recover an evolution of the quasar proximity zones with redshift that is much shallower than previously measured, thus we argue for a much shallower evolution in the neutral gas fraction. 
+\item We find that the distribution of measured quasar proximity zones agrees with expectations form simulations for the bulk of the sample. However, we find a couple of very small quasar proximity zones with $R_p\lesssim 1$~pMpc, that are very hard to reproduce in our simulations. 
+\item Possible explanations for these small quasar proximity zones could be a high neutral gas fraction of the ambient IGM, very large UVB fluctuations or a very short lifetime of the quasar. 
+\end{itemize}
+
+
+
+\section*{Acknowledgement}
+The authors would like to thank Martin Haehnelt and Jamie Bolton for valuable input and discussion. 
+
+\bibliography{literatur_hz}
+
+\end{document}
